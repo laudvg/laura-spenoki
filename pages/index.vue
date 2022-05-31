@@ -1,4 +1,7 @@
 <template>
+<div>
+  Laura
+</div>
 </template>
 
 <script>
