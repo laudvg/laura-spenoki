@@ -37,7 +37,7 @@ export default {
         {
           hid:"description", //unique identifier
           name:"description", //name
-          content:"The midnight gospell stories", //
+          content:"The midnight gospel stories", //
         }
       ]
     };
