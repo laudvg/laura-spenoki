@@ -1,5 +1,6 @@
 <template>
   <div>
+    <add-post></add-post>
     <post-card v-for="post in posts" v-bind:key="post.id" 
     :id="post.id"
     :post="post.body"
@@ -12,10 +13,12 @@
 <script>
 import axios from "axios";
 import PostCard from "../../components/MainBlog/PostCard.vue";
+import AddPost from "../../components/MainBlog/AddPost.vue";
 
 export default {
   components: {
     PostCard,
+    AddPost,
   },
   data() {
     return {
@@ -34,7 +37,12 @@ export default {
       ]
     };
   },
-  async created() {
+  created() {
+    this.fetchPosts();
+  },
+
+  methods: {
+    async fetchPosts(){
     const configuration = {
       headers: {
       'Content-type': 'application/json; charset=UTF-8',
@@ -44,11 +52,11 @@ export default {
       const route = `https://jsonplaceholder.typicode.com/posts/`
       const response = await axios.get(route, configuration);
       this.posts = response.data
-      // console.log(response.data);
     } catch (error) {
       console.log(err);
     }
-  },
+    }
+  }
 }
 </script>
 
