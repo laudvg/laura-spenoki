@@ -10,11 +10,11 @@
 </template>
 <script>
   export default{
-    name: "BlogHeader",
+    name: 'BlogHeader',
   };
 </script>
 <style>
-@import url("https://fonts.googleapis.com/css2?family=Oswald:wght@700&family=Roboto:ital,wght@0,400;0,900;1,700&display=swap");
+@import url('https://fonts.googleapis.com/css2?family=Oswald:wght@700&family=Roboto:ital,wght@0,400;0,900;1,700&display=swap');
 
 .header-text{
   font-family: Oswald;

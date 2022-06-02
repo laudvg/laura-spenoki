@@ -69,7 +69,7 @@ export default {
     async fetchPost(){
       const configuration = {
         headers: {
-        "Content-type": "application/json; charset=UTF-8",
+        'Content-type': 'application/json; charset=UTF-8',
         },
       }
       try {
@@ -84,7 +84,7 @@ export default {
     async fetchComments(){
       const configuration = {
         headers: {
-        "Content-type": "application/json; charset=UTF-8",
+        'Content-type': 'application/json; charset=UTF-8',
         },
       }
       try {

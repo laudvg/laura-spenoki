@@ -6,9 +6,9 @@
 </template>
 
 <script>
-import BlogHeader from "../components/MainBlog/BlogHeader.vue"
+import BlogHeader from '../components/MainBlog/BlogHeader.vue'
 export default {
-layout: "blog",
+layout: 'blog',
 components:{
   BlogHeader,
 }
