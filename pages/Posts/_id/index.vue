@@ -1,17 +1,35 @@
 <template>
   <div>
-    <h1>{{ post.title }}</h1>
-    <h3> {{ post.body }}</h3>
-    <h3> {{ post.id }}</h3>
+    <b-row>
+      <b-col cols="3"></b-col>
+      <b-col cols="6">
+        <h6 class="detail-post-id d-flex justify-content-end text-muted">Blog post #{{ post.id }}</h6>
+        <h1 class="detail-post-title">{{ post.title }}</h1>
+        <h6 class="detail-post-id text-muted">Written by {{ post.userId }}</h6>
+        <div class="comment-cards-i">
+          <h3 class="detail-post-body mt-4 mr-0">{{ post.body }}{{ post.body }}{{ post.body }}{{ post.body }}{{ post.body }}</h3>
+        </div>
+      </b-col>
+      <b-col cols="3"></b-col>
+    </b-row>
     
-    <div>
-      <comment-card v-for="comment in comments" v-bind:key="comment.id"
-      :id="comment.id"
-      :name="comment.name"
-      :email="comment.email"
-      :body="comment.body"
-      ></comment-card>
-    </div>
+    <b-row class="blog-comments">
+      <b-col cols="3"></b-col>
+      <b-col  cols="6">
+        <h6 class="my-4 reponses-title"> Responses:</h6>
+        <div class="comment-cards-i">
+          <comment-card v-for="comment in comments" v-bind:key="comment.id"
+          :id="comment.id"
+          :name="comment.name"
+          :email="comment.email"
+          :body="comment.body"
+          class="mb-4 "
+          ></comment-card>
+        </div>
+      </b-col>
+      <b-col cols="3"></b-col>
+    </b-row>
+
   </div>
   
 </template>
@@ -26,7 +44,7 @@ export default {
   },
   data(){
     return {
-      post:{},
+      post:[],
       comments:[],
     }
   },
@@ -35,9 +53,9 @@ export default {
       title: "TMG " + this.post.title,
       meta: [
         {
-          hid:"description", //unique identifier
-          name:"description", //name
-          content:"The midnight gospel stories", //
+          hid:"TMG",
+          name:"TMG",
+          content:"The midnight gospel stories",
         }
       ]
     };
@@ -58,7 +76,6 @@ export default {
         const route = `https://jsonplaceholder.typicode.com/posts/${this.$route.params.id}`
         const response = await axios.get(route, configuration);
         this.post = response.data;
-        console.log(response.data);
       } catch (error) {
         console.log(err);
       }
@@ -74,7 +91,6 @@ export default {
         const route = `https://jsonplaceholder.typicode.com/posts/${this.$route.params.id}/comments`
         const response = await axios.get(route, configuration);
         this.comments = response.data;
-        console.log(this.comments, "2");
       } catch (error) {
         console.log(err);
       }
@@ -84,5 +100,38 @@ export default {
 </script>
 
 <style>
+.detail-post-id{
+  font-family: Oswald;
+  font-size: 1rem;
+}
 
+.blog-comments{
+  background-color: rgba(220, 220, 220, 0.507);
+}
+.detail-post-title{
+  font-family: Roboto;
+  font-weight: 500;
+  font-style: italic;
+  font-size: 2rem;
+  font-weight: bold;
+  text-shadow: 1px 1px #FFC107;
+}
+
+.detail-post-body{
+  min-height:15rem;
+  width:40rem;
+  font-family: Roboto;
+  font-size: 1rem;
+}
+
+.comment-cards-i{
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.reponses-title{
+  font-family: Oswald;
+  font-size: 1rem;
+}
 </style>
