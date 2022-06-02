@@ -16,12 +16,17 @@ $ npm run start
 generate static project
 $ npm run generate
 ```
-
+##  Description
 This constutites a Blog, it has two routes: 
+
 -The first one shows all the posts from new to old.
+
 -The second one shows the details of each post and the comment every post has.
 
- :sun_with_face: Project created with Vue/Nuxt
+
+##  Project created with:
+
+ :sun_with_face: Vue/Nuxt
 
  :sun_with_face: Axios
 
