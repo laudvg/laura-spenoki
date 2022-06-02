@@ -39,7 +39,7 @@ import axios from "axios";
 import PostCard from "../components/MainBlog/PostCard.vue"
 
 export default {
-  name: 'IndexPage',
+  name: "IndexPage",
   components: {
     PostCard,
   },
@@ -76,7 +76,7 @@ export default {
     async fetchPosts(){
     const configuration = {
         headers: {
-        'Content-type': 'application/json; charset=UTF-8',
+        "Content-type": "application/json; charset=UTF-8",
         },
       }
       try {
@@ -95,14 +95,14 @@ export default {
       try{
         const response = await axios.post(route, newData);
         this.newPost = response.data;
-        this.addToPosts();
+        this.addToPosts(this.newPost );
       } catch (error) {
         console.log(error);
       }
     },
 
-    addToPosts(){
-      this.merged = [ ...this.posts, this.newPost];
+    addToPosts(newPost){
+      this.merged = [ ...this.posts, newPost];
       this.newPostData = {};
       this.add = false; 
     },
