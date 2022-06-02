@@ -22,7 +22,7 @@
     <b-row class="mt-4 post-cards">
       <b-col cols="1"></b-col>
       <b-col cols="10" class="d-flex flex-wrap justify-content-center">
-        <post-card v-for="post in merged" v-bind:key="post.id" 
+        <post-card v-for="post in mergePosts" v-bind:key="post.id" 
         :id="post.id"
         :post="post.body"
         :title="post.title"
@@ -46,21 +46,21 @@ export default {
   data() {
     return {
       posts: {},
+      newPost:{},
+      mergePosts:{},
       newPostData: {
         userId: 1,
         title:"",
         body:"",
         id:""
       },
-      restData: {
+      resetData: {
         userId: 1,
         title:"",
         body:"",
         id:""
       },
-      newPost:{},
       add: false,
-      merged:{},
     }
   },
   head() {
@@ -75,12 +75,9 @@ export default {
       ]
     };
   },
-  created() {
-    this.fetchPosts();
-  },
   methods: {
     async fetchPosts(){
-    const configuration = {
+      const configuration = {
         headers: {
         'Content-type': 'application/json; charset=UTF-8',
         },
@@ -88,8 +85,7 @@ export default {
       try {
         const route = `https://jsonplaceholder.typicode.com/posts/`
         const response = await axios.get(route, configuration);
-        this.posts = response.data.sort((b, a) => a.id - b.id);
-        console.log(this.posts);
+        this.mergePosts = response.data.sort((b, a) => a.id - b.id);
       } catch (error) {
         console.log(error);
       }
@@ -108,15 +104,20 @@ export default {
     },
 
     addToPosts(){
-      this.merged = [ ...this.posts, this.newPost];
-      this.newPostData = this.restData;
+      this.newPostData = this.resetData;
+      this.mergePosts = [this.newPost, ...this.mergePosts];
       this.add = false; 
+      console.log("maiaia")
     },
 
     addPost(){
       this.add = !this.add;
     }
   },
+
+    created() {
+      this.fetchPosts();
+    },
 
   watch:{
     posts:"addToPosts",
