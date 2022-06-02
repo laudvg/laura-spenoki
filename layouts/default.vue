@@ -16,5 +16,7 @@ components:{
 </script>
 
 <style>
-
+* template{
+  overflow-x: hidden;
+}
 </style>
