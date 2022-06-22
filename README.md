@@ -32,4 +32,4 @@ This constutites a Blog, it has two routes:
 
  :sun_with_face: BootstrapVue
 
- :sun_with_face: It's feeded with dummy data from JSONPlaceholder
+ :sun_with_face: Gets data from OpenweatherAPI
