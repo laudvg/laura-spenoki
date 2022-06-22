@@ -31,5 +31,3 @@ This constutites a Blog, it has two routes:
  :sun_with_face: Axios
 
  :sun_with_face: BootstrapVue
-
- :sun_with_face: Gets data from OpenweatherAPI
